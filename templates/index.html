@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Genesys Chat">
+    <title>Genesys Cloud Chat</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" type="image/png" href="/static/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>💬 Genesys Chat</h1>
+            <div class="status-indicator" id="status">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Username Setup -->
+        <div class="username-setup" id="usernameSetup">
+            <div class="setup-card">
+                <div class="logo">👤</div>
+                <h2>Welcome!</h2>
+                <p>Enter your name to start chatting</p>
+                <input type="text" id="usernameInput" placeholder="Your name..." maxlength="50" autocomplete="name">
+                <button onclick="setUsername()" class="btn-primary">Start Chatting</button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer" style="display: none;">
+            <!-- Messages -->
+            <div class="messages" id="messages">
+                <div class="welcome-message">
+                    <div class="welcome-icon">👋</div>
+                    <div class="welcome-text">Welcome to Genesys Cloud Chat!</div>
+                    <div class="welcome-subtext">Start a conversation</div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <input type="text" 
+                       id="messageInput" 
+                       placeholder="Type your message..." 
+                       maxlength="500"
+                       autocomplete="off">
+                <button onclick="sendMessage()" class="btn-send" id="sendButton" title="Send message">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Install Prompt -->
+        <div class="install-prompt" id="installPrompt" style="display: none;">
+            <div class="install-icon">📱</div>
+            <div class="install-text">
+                <strong>Install App</strong>
+                <p>Get the full experience!</p>
+            </div>
+            <button onclick="installApp()" class="btn-install">Install</button>
+            <button onclick="dismissInstall()" class="btn-dismiss">✕</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
